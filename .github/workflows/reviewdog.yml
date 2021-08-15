@@ -2,7 +2,7 @@ name: reviewdog
 on: [pull_request]
 jobs:
   reviewdog-check:
-    name: runner / staticcheck
+    name: reviewdog check
     runs-on: ubuntu-latest
     steps:
       - name: Check out code into the Go module directory
