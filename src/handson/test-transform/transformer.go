@@ -52,7 +52,8 @@ func sampleWideNarrow() {
 	}
 }
 
-func foldShiftJISFile(filename string) error {
+func _(filename string) error {
+	// foldShiftJISFile
 	f, err := os.Open(filename)
 	if err != nil {
 		return err
