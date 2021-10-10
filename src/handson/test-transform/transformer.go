@@ -50,10 +50,12 @@ func sampleWideNarrow() {
 		p := width.LookupRune(r)
 		fmt.Printf("%c: %s\n", r, p.Kind())
 	}
+	if err := foldShiftJISFile("test.csv"); err != nil {
+		log.Println(err)
+	}
 }
 
-func _(filename string) error {
-	// foldShiftJISFile
+func foldShiftJISFile(filename string) error {
 	f, err := os.Open(filename)
 	if err != nil {
 		return err
