@@ -6,6 +6,8 @@ import (
 	"math/rand"
 	"net/http"
 	"time"
+
+	"github.com/microcosm-cc/bluemonday"
 )
 
 var (
@@ -22,7 +24,9 @@ var (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
+	p := bluemonday.UGCPolicy()
 	you := r.FormValue("p")
+	you = p.Sanitize(you)
 	_, err := fmt.Fprintf(w, "%sさんの運勢は、「%s」です！", you, omikuji[rand.Intn(len(omikuji))])
 	if err != nil {
 		log.Fatal(err)
