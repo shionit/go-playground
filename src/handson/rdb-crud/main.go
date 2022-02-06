@@ -48,6 +48,9 @@ func GetPost(id int) (post Post, err error) {
 	post.Comments = []Comment{}
 	err = Db.QueryRow("select id, content, author from posts where id = $1",
 		id).Scan(&post.Id, &post.Content, &post.Author)
+	if err != nil {
+		return
+	}
 
 	rows, err := Db.Query("select id, content, author from comments where post_id = $1", post.Id)
 	if err != nil {
