@@ -43,7 +43,6 @@ func main() {
 	_ = post.Create()
 	fmt.Println(post)
 
-	readPost := Post{Id: 1}
-	readPost, _ = GetPost(post.Id)
+	readPost, _ := GetPost(post.Id)
 	fmt.Println(readPost)
 }
