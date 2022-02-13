@@ -42,6 +42,10 @@ func main() {
 	}
 
 	var post Post
-	xml.Unmarshal(xmlData, &post)
+	err = xml.Unmarshal(xmlData, &post)
+	if err != nil {
+		fmt.Println("Error Unmarshal XML data:", err)
+		return
+	}
 	fmt.Println(post)
 }
